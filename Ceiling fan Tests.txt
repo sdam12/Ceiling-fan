@@ -18,16 +18,16 @@ public class CeilingFanTest {
     }
 //Test Speed Cord
  public void testSpeedCord() {
-        fan.pullSpeedCord(); // Speed should go to 1
+        fan.pullSpeedCord();
         assertEquals(1, fan.getSpeed());
         
-        fan.pullSpeedCord(); // Speed should go to 2
+        fan.pullSpeedCord(); // Speed 2
         assertEquals(2, fan.getSpeed());
         
-        fan.pullSpeedCord(); // Speed should go to 3
+        fan.pullSpeedCord(); // Speed 3
         assertEquals(3, fan.getSpeed());
         
-        fan.pullSpeedCord(); // Speed should go back to 0 (off)
+        fan.pullSpeedCord(); // Fan off
         assertEquals(0, fan.getSpeed());
     }
 //Direction Test
