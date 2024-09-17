@@ -1,0 +1,24 @@
+public class CeilingFan {
+    private int speed;
+    private boolean isReversed;
+    public CeilingFan() {
+        this.speed = 0;        //speed initialize at 0
+        this.isReversed = false; //initially in the clockwise direction
+    }
+    public void pullSpeedCord() {
+        speed = (speed + 1) % 4; //Increase speed till 3
+    }
+    public void pullDirectionCord() {
+        isReversed = !isReversed; // Change direction
+    }
+    public int getSpeed() {
+        return speed;
+    }
+    public String getDirection() {
+        return isReversed ? "Reversed" : "Normal"; 
+    }
+    @Override
+    public String toString() {
+        return "CeilingFan [speed=" + speed + ", direction=" + getDirection() + "]";
+    }
+}
