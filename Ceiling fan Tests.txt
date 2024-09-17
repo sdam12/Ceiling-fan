@@ -1,0 +1,69 @@
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+public class CeilingFanTest {
+    private CeilingFan fan;
+
+ // Initialize a new CeilingFan instance before each test
+    @Before
+    public void setUp() {
+        fan = new CeilingFan();
+    }
+//Initial speed to 0 and Direction 
+    @Test
+    public void testInitialConditions() {
+        assertEquals(0, fan.getSpeed());
+        assertEquals("Normal", fan.getDirection());
+    }
+//Test Speed Cord
+ public void testSpeedCord() {
+        fan.pullSpeedCord(); // Speed should go to 1
+        assertEquals(1, fan.getSpeed());
+        
+        fan.pullSpeedCord(); // Speed should go to 2
+        assertEquals(2, fan.getSpeed());
+        
+        fan.pullSpeedCord(); // Speed should go to 3
+        assertEquals(3, fan.getSpeed());
+        
+        fan.pullSpeedCord(); // Speed should go back to 0 (off)
+        assertEquals(0, fan.getSpeed());
+    }
+//Direction Test
+    @Test
+    public void testDirectionCord() {
+        fan.pullDirectionCord(); // Direction should be reversed
+        assertEquals("Reversed", fan.getDirection());
+        
+        fan.pullDirectionCord(); // Direction should go back to normal
+        assertEquals("Normal", fan.getDirection());
+    }
+
+  // Test the Direction as we change speed
+    @Test
+    public void testDirectionWhileSpeedChanges() {
+      
+        fan.pullDirectionCord(); // Reverse direction
+        assertEquals("Reversed", fan.getDirection());
+        
+        fan.pullSpeedCord(); // Speed should go to 1
+        assertEquals(1, fan.getSpeed());
+        assertEquals("Reversed", fan.getDirection());
+        
+        fan.pullSpeedCord(); // Speed should go to 2
+        assertEquals(2, fan.getSpeed());
+        assertEquals("Reversed", fan.getDirection());
+        
+        fan.pullSpeedCord(); // Speed should go to 3
+        assertEquals(3, fan.getSpeed());
+        assertEquals("Reversed", fan.getDirection());
+        
+        fan.pullSpeedCord(); // Speed should go back to 0 (off)
+        assertEquals(0, fan.getSpeed());
+        assertEquals("Reversed", fan.getDirection()); // Direction is reversed
+
+        fan.pullDirectionCord(); // Direction normal
+        assertEquals("Normal", fan.getDirection());
+    }
+}
